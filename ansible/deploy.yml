@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: k8s
   connection: local
   gather_facts: false
 
