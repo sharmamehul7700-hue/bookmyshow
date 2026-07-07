@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    - name: Update Kubernetes Deployment
+      shell: |
+        kubectl set image deployment/bookmyshow \
+        bookmyshow=356627769525.dkr.ecr.ap-south-1.amazonaws.com/bookmyshow-ci-cd:latest
+
+    - name: Wait for rollout
+      shell: |
+        kubectl rollout status deployment/bookmyshow
